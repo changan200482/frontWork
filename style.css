@@ -13,6 +13,32 @@ body {
 #borderNavigationBar {
   border: 1px black solid;
   width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.borderTab
+{
+  border: 1px black solid;
+  width: 80%;
+  height: 2rem;
+  margin: 10% auto; /* 简化上下左右外边距设置 */
+  font-size: 0.9em;
+  border-radius: 2.8%;
+  user-select: none;
+  display: flex; /* 添加Flexbox布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+#userTab
+{
+  width: 85%;
+}
+#userTab:hover
+{
+  background-color: transparent;
 }
 
 #main {
@@ -21,14 +47,13 @@ body {
   margin: 1.5%;
   display: flex; /* 添加Flex布局 */
   flex-direction: column; /* 设置垂直方向布局 */
-  overflow-y: auto; /* 允许内容溢出时出现滚动条 */
 }
 
 #navigationBar {
   border: 1px black solid;
   margin: 1%;
   width: auto;
-  height: 2em;
+  height: 2rem;
 }
 
 #content {
@@ -38,4 +63,74 @@ body {
   /* 高度设置为flex-grow，让其自动填充剩余空间 */
   flex-grow: 1;
   /* 移除固定高度设置，避免溢出 */
+  display: flex; /* 添加Flex布局 */
+  flex-direction: column; /* 设置垂直方向布局 */
+  overflow-y: auto;
+}
+
+.work
+{
+  border: 1px black solid;
+  width: 90%;
+  margin:2% auto;
+  padding:1% 2%;
+}
+.headerBox {
+  display: flex; /* 使用Flex布局来排列标题和按钮 */
+  justify-content: space-between; /* 在容器两端对齐项目，中间留有空白 */
+  align-items: center; /* 垂直居中对齐 */
+}
+
+#multiplicationTable
+{
+  font-size: 0.8em;
+}
+#multiplicationTable td
+{
+  width: 9%;
+  height: 6%;
+  border:1px black solid;
+  padding: 1%;
+}
+
+.button {
+  background-color:rgba(236, 236, 236, 0);
+  font-size: 0.9em;
+  border: 1px black solid;
+  /* width: 3rem; 这里可能需要调整，取决于实际需求 */
+  height: 1.5rem;
+  border-radius: 6.8%;
+  text-align: center;
+  vertical-align: bottom;
+  user-select: none;
+}
+
+.buttonBox1
+{
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: 10%;
+}
+#generateMultiplication
+{
+  margin-bottom: 6%;
+}
+#scoreInput
+{
+  border: 1px black solid;
+  width: 12.5%;
+}
+.contentInput:focus
+{
+  outline: none;
+}
+
+.borderTab:hover,.button:hover
+{
+  background-color:rgba(236, 236, 236, 50);
+}
+.borderTab:active,.button:active
+{
+  background-color:rgba(236, 236, 236, 0);
 }
