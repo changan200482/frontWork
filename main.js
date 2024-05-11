@@ -71,3 +71,37 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var draggable = document.getElementById('draggable');
+  var content = document.getElementById('content'); // 获取content元素用于计算边界
+
+  draggable.addEventListener('mousedown', function(event) {
+    var offsetX = event.clientX - draggable.offsetLeft;
+    var offsetY = event.clientY - draggable.offsetTop;
+
+    function onMouseMove(event) {
+      var newX = event.clientX - offsetX;
+      var newY = event.clientY - offsetY;
+
+      // 计算边界
+      var maxX = content.offsetWidth - draggable.offsetWidth;
+      var maxY = content.offsetHeight - draggable.offsetHeight;
+
+      // 限制拖动范围
+      newX = Math.min(maxX, Math.max(0, newX));
+      newY = Math.min(maxY, Math.max(0, newY));
+
+      draggable.style.left = newX + 'px';
+      draggable.style.top = newY + 'px';
+    }
+
+    function onMouseUp() {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  });
+});
