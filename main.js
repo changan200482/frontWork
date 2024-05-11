@@ -40,34 +40,96 @@ function validateEmail(email) {
   var pattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
   return pattern.test(email);
 }
-
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("generateMultiplication").addEventListener("click", generateMultiplicationTable);
-  document.getElementById("hideMultiplication").addEventListener("click", hideMultiplicationTable);
+  const tabs = document.querySelectorAll('.borderTab[data-target]');
+  const content = document.getElementById('content');
 
-  document.getElementById('evaluateButton').addEventListener('click', function() {
+  // 初始化时，默认显示主页内容（如果需要）
+  updateContent('home');
+
+  // 为每个标签添加点击事件监听器
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      // 移除所有activeTab样式
+      tabs.forEach(t => t.classList.remove('activeTab'));
+      // 给当前点击的标签添加activeTab样式
+      this.classList.add('activeTab');
+      
+      // 根据data-target更新内容区
+      const target = e.target.dataset.target;
+      updateContent(target);
+    });
+  });
+
+  function updateContent(target) {
+    switch (target) {
+      case 'home':
+        // 清空或替换content内容，展示主页内容
+        content.innerHTML = '<p>这里是主页内容...</p>';
+        break;
+      case 'javaScriptWork':
+        content.innerHTML = `
+        <!--作业1-->
+        <div class = "work" id = "work1">
+          <div class = "headerBox">
+            <h4>1.九九乘法表</h4>
+            <div class = "buttonBox1">
+              <button class="button" id="generateMultiplication">点击生成</button>
+              <button class="button" id="hideMultiplication">点击隐藏</button>
+            </div>
+          </div>
+          <div class = "contentBox">
+            <table id = "multiplicationTable"></table>
+          </div>
+        </div>
+
+        <!--作业2-->
+        <div class="work" id="work2">
+          <div class="headerBox">
+            <h4>2. 成绩评价</h4>
+          </div>
+          <div class="contentBox">
+            <span class = "workText">请输入1~100内的数字:</span>
+            <input type="number" class="contentInput" id="scoreInput"/>
+            <button class = "button" id="evaluateButton">确定</button>
+          </div>
+        </div>
+
+        <!--作业3-->
+        <div class = "work" id = "work3">
+          <div class="headerBox">
+            <h4>3. 检测邮箱</h4>
+          </div>
+          <div class="contentBox">
+            <span class = "workText">请输入要检测的邮箱:</span>
+            <input type="text" class="contentInput" id="emailInput"/>
+            <button class = "button" id="emailEvaluateButton">确定</button>
+          </div>
+        </div>
+      </div>
+        `
+      default:
+        console.log('未知的标签目标');
+    }
+  }
+
+
+});
+
+document.addEventListener("click", function(e) {
+  if (e.target.id === "generateMultiplication") {
+    generateMultiplicationTable();
+  } else if (e.target.id === "hideMultiplication") {
+    hideMultiplicationTable();
+  } else if (e.target.id === "evaluateButton") {
     // 获取输入的成绩
     var score = parseInt(document.getElementById('scoreInput').value);
-    // 调用evaluateScore函数并处理结果
     let result = evaluateScore(score);
-    if (result !== "请输入1 ~ 100以内的数字") {
-      alert(result); // 弹出消息框显示评价结果
-    } else {
-      alert(result); // 对于无效输入也给出提示
-    }
-  });
-
-  document.getElementById("emailEvaluateButton").addEventListener("click",function(){
-    var email = String(document.getElementById('emailInput').value);
-
+    alert(result);
+  } else if (e.target.id === "emailEvaluateButton") {
+    var email = document.getElementById('emailInput').value;
     let result = validateEmail(email);
-    if(result)
-    {
-      alert("符合邮箱格式")
-    }
-    else
-    {
-      alert("不符合邮箱格式")
-    }
-  });
+    alert(result ? "符合邮箱格式" : "不符合邮箱格式");
+  }
 });
+

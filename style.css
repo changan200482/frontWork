@@ -65,10 +65,7 @@ body
 {
   border: 1px black solid;
   margin: 1%;
-  /* width: auto; 可以移除，因为默认就是auto */
-  /* 高度设置为flex-grow，让其自动填充剩余空间 */
   flex-grow: 1;
-  /* 移除固定高度设置，避免溢出 */
   display: flex; /* 添加Flex布局 */
   flex-direction: column; /* 设置垂直方向布局 */
   overflow-y: auto;
@@ -82,7 +79,8 @@ body
   padding:1% 2%;
 }
 
-.headerBox {
+.headerBox 
+{
   display: flex; /* 使用Flex布局来排列标题和按钮 */
   justify-content: space-between; /* 在容器两端对齐项目，中间留有空白 */
   align-items: center; /* 垂直居中对齐 */
@@ -137,12 +135,16 @@ body
   outline: none;
 }
 
-.borderTab:hover,.button:hover
+.borderTab:hover:not(.activeTab),.button:hover
 {
-  background-color:rgba(236, 236, 236, 50);
+  background-color:rgba(236, 236, 236, 60);
 }
 
-.borderTab:active,.button:active
+.button:active
 {
   background-color:rgba(236, 236, 236, 0);
+}
+.activeTab
+{
+  background-color:rgba(216, 216, 216, 15);
 }
