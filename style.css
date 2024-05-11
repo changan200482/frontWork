@@ -29,7 +29,6 @@ body
   margin: 10% auto; /* 简化上下左右外边距设置 */
   font-size: 0.9em;
   border-radius: 2.8%;
-  user-select: none;
   display: flex; /* 添加Flexbox布局 */
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
@@ -108,7 +107,6 @@ body
   border-radius: 6.8%;
   text-align: center;
   vertical-align: bottom;
-  user-select: none;
 }
 
 .buttonBox1
