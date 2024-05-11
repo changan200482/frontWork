@@ -65,7 +65,52 @@ document.addEventListener("DOMContentLoaded", function() {
     switch (target) {
       case 'home':
         // 清空或替换content内容，展示主页内容
-        content.innerHTML = '<p>这里是主页内容...</p>';
+        content.innerHTML = `
+          <div id="selfInfo">
+          <div id="infoTitle">
+            <div id="profile">
+              <img src="./image/profilePicture.jpg" alt="profilePicture" id="profilePicture">
+              <div id="accountNum">
+                <h2 id="surferName">ASaKi</h2>
+                <div id="emailNumBox" class="infoBox">
+                  <img src="./image/email-fill.svg" alt="email" id="email">
+                  <span class="homeFont">:202211030701@qq.com</span>
+                </div>
+                <div id="QQNumBox" class="infoBox">
+                  <img src="./image/qq.svg" alt="qq" id="qq">
+                  <span class="homeFont">:2806054563</span>
+                </div>
+              </div>
+            </div>
+            <div id="mainSocialWebBox" class="infoBox">
+              <span>社交网站:</span>
+              <a href="https://github.com/changan200482?tab=repositories" target="_blank" rel="noopener">
+                <img src="./image/github.svg" alt="github" >
+              </a>
+              <a href="https://space.bilibili.com/290385549?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">
+                <img src="./image/bilibili.svg" alt="bilibili">
+              </a>
+            </div>
+          </div>
+          
+
+          <p id="introduction"><span>一名懒惰成性的乐观主义者</span></p>
+          <div id="selfIntroduction">
+            <span  class="title">个性签名</span>
+            <span class="content">如果能在浪费时间中获得快乐，就不叫浪费时间</span>
+            <span  class="title">当前所在地</span>
+            <span class="content">山东 青岛</span>
+          </div>
+        </div>
+
+        <audio controls id="player1">
+          <source src="./audio/Travelers.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。
+        </audio>
+
+        <div id="draggable"></div>
+        `;
+        setupDraggable();
         break;
       case 'javaScriptWork':
         content.innerHTML = `
@@ -127,9 +172,41 @@ document.addEventListener("click", function(e) {
     let result = evaluateScore(score);
     alert(result);
   } else if (e.target.id === "emailEvaluateButton") {
-    var email = document.getElementById('emailInput').value;
+    var email = String(document.getElementById('emailInput').value);
+
     let result = validateEmail(email);
     alert(result ? "符合邮箱格式" : "不符合邮箱格式");
   }
 });
 
+function setupDraggable() {
+  var draggable = document.getElementById('draggable');
+  if (draggable) { // 确保draggable元素存在才执行绑定操作
+    draggable.addEventListener('mousedown', function(event) {
+      var offsetX = event.clientX - draggable.offsetLeft;
+      var offsetY = event.clientY - draggable.offsetTop;
+
+      function onMouseMove(event) {
+        var newX = event.clientX - offsetX;
+        var newY = event.clientY - offsetY;
+
+        var maxX = content.offsetWidth - draggable.offsetWidth;
+        var maxY = content.offsetHeight - draggable.offsetHeight;
+
+        newX = Math.min(maxX, Math.max(0, newX));
+        newY = Math.min(maxY, Math.max(0, newY));
+
+        draggable.style.left = newX + 'px';
+        draggable.style.top = newY + 'px';
+      }
+
+      function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+  }
+}
