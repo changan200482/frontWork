@@ -166,3 +166,77 @@ body
   right: 0.5rem;
   top: 0.5rem;
 }
+#profilePicture
+{
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  margin: 0rem 1.2rem 0rem 0rem;
+}
+
+.infoBox {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+}
+#surferName
+{
+  font-size:2rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.infoBox span
+{
+  font-size: 1.12rem;
+}
+.infoBox img 
+{ 
+  width: 30px;
+  height: 30px;
+}
+#selfInfo
+{
+  margin: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#profile
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#mainSocialWebBox
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#introduction
+{
+  padding: 0.15rem;
+  font-weight:lighter;
+  border: 1px black solid;
+}
+#selfIntroduction
+{
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  gap: 1rem;
+}
+#selfIntroduction .title
+{
+  font-weight: bold;
+  color: rgb(206, 206, 206);
+  font-size: 1.12rem;
+}
+#selfIntroduction .title, .content
+{
+  margin: 2rem 0rem 4rem 0rem;
+}
+#infoTitle
+{
+  padding: 0.15rem;
+  border: 1px black solid;
+}
+
+

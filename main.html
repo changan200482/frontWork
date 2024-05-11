@@ -38,32 +38,48 @@
           <div id = "navigationBar"></div>
           <!--主要内容页面-->
           <div id = "content">
-            <h1>我的个人主页</h1>
             <div id="selfInfo">
-              <img src="./image/profilePicture.jpg" alt="profilePicture" width="128">
-              <h2>ASaKi</h2>
-              <div id="mainSocialWebBox">
-                <a href="https://github.com/changan200482?tab=repositories" target="_blank" rel="noopener">
-                  <img src="./image/github.svg" alt="github" width="64" >
-                </a>
-                <a href="https://space.bilibili.com/290385549?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">
-                  <img src="./image/bilibili.svg" alt="bilibili" width="64">
-                </a>
+              <div id="infoTitle">
+                <div id="profile">
+                  <img src="./image/profilePicture.jpg" alt="profilePicture" id="profilePicture">
+                  <div id="accountNum">
+                    <h2 id="surferName">ASaKi</h2>
+                    <div id="emailNumBox" class="infoBox">
+                      <img src="./image/email-fill.svg" alt="email" id="email">
+                      <span class="homeFont">:202211030701@qq.com</span>
+                    </div>
+                    <div id="QQNumBox" class="infoBox">
+                      <img src="./image/qq.svg" alt="qq" id="qq">
+                      <span class="homeFont">:2806054563</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="mainSocialWebBox" class="infoBox">
+                  <span>社交网站:</span>
+                  <a href="https://github.com/changan200482?tab=repositories" target="_blank" rel="noopener">
+                    <img src="./image/github.svg" alt="github" >
+                  </a>
+                  <a href="https://space.bilibili.com/290385549?spm_id_from=333.1007.0.0" target="_blank" rel="noopener">
+                    <img src="./image/bilibili.svg" alt="bilibili">
+                  </a>
+                </div>
               </div>
-             
-              <div id="emailNumBox" class="infoBox">
-                <img src="./image/email-fill.svg" alt="email" width="64">
-                <span class="homeFont">:202211030701@qq.com</span>
-              </div>
-              <div id="QQNumBox" class="infoBox">
-                <img src="./image/qq.svg" alt="qq" width="64">
-                <span class="homeFont">:2806054563</span>
+              
+
+              <p id="introduction"><span>一名懒惰成性的乐观主义者</span></p>
+              <div id="selfIntroduction">
+                <span  class="title">个性签名</span>
+                <span class="content">如果能在浪费时间中获得快乐，就不叫浪费时间</span>
+                <span  class="title">当前所在地</span>
+                <span class="content">山东 青岛</span>
               </div>
             </div>
+
             <audio controls id="player1">
               <source src="./audio/Travelers.mp3" type="audio/mpeg">
             您的浏览器不支持 audio 元素。
             </audio>
+
             <div id="draggable"></div>
           </div>
         </div>
