@@ -1,0 +1,90 @@
+body 
+{
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+}
+
+#wrapper /*两栏类型的页面*/
+{
+  display: flex;
+  flex-direction: row;
+  min-height: 99vh;
+}
+
+#userTab/*用户标签*/
+{
+  width: 85%;
+}
+#userTab:hover
+{
+  background-color: transparent;/*用户标签设为透明，覆盖borderTab类默认的hover伪类*/
+}
+
+#main 
+{
+  background-color: rgb(247, 248, 252);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2.3em; 
+  width: 80%; /* 调整宽度以适应导航栏，假设总宽度减去导航栏宽度 */
+  margin: 1.5%;
+  display: flex; /* 添加Flex布局 */
+  flex-direction: column; /* 设置垂直方向布局 */
+}
+
+
+#navigationBar 
+{
+  margin: 1%;
+  width: auto;
+  height: 2rem;
+}
+
+#content 
+{
+  margin: 1%;
+  flex-grow: 1;
+  display: flex; /* 添加Flex布局 */
+  flex-direction: column; /* 设置垂直方向布局 */
+  position: relative;
+}
+
+
+#borderNavigationBar /*边栏样式*/
+{
+  border-radius:0% 1.3% 1.3% 0%; 
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.borderTab/*标签默认样式*/
+{
+  border: 0.5px rgba(0, 0, 0, 0.086) solid;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-color: transparent; 
+  border-radius: 0.45em;
+  width: 80%;
+  height: 5em;
+  margin: 10% auto; /* 简化上下左右外边距设置 */
+  font-size: 0.9em;
+
+  -webkit-user-select: none; /* Safari, Chrome 和 Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 和 Edge */
+  user-select: none; /* 标准语法 */
+
+  display: flex; /* 添加Flexbox布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+.activeTab
+{
+  background-color:rgb(98, 84, 220, 0.05);
+  border:1px rgba(98, 84, 220, 0.5)  solid;
+}
+.borderTab:hover:not(.activeTab)
+{
+  background-color:rgb(98, 84, 220, 0.05);
+}
+
+
