@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const tabs = document.querySelectorAll('.borderTab[data-target]');
   
   // 初始化时，默认显示主页内容
-  updateContent('home');
+  //updateContent('home');
 
   // 为每个标签添加点击事件监听器
   tabs.forEach(tab => {

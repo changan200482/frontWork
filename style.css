@@ -57,9 +57,9 @@ body
   color:white;
   background-color: rgb(98, 84, 220);
   font-size: 0.9em;
-  height: 5rem;
+  height: 2.5rem;
   width: 5rem;
-  border-radius: 50%;
+  border-radius: 5%;
   text-align: center;
   vertical-align: bottom;
 }
@@ -249,4 +249,14 @@ body
 {
   padding: 0.15rem;
 }
-
+/*地图样式*/
+#container
+{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: "微软雅黑";
+  border-radius: 5%;
+}

@@ -3,9 +3,12 @@
     <head>
         <meta charset = "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
         <title>个人博客</title>
         <link rel = "stylesheet" href = "./style.css">
+
     </head>
+
     <body>
       <div id = "wrapper">
         <!--左边栏-->
@@ -22,10 +25,10 @@
           <div class = "borderTab" data-target="Text">
             Text
           </div>
-          <div class = "borderTab">
-
+          <div class = "borderTab" data-target="BMapLoad">
+            百度地图
           </div>
-          <div class = "borderTab">
+          <div class = "borderTab" >
 
           </div>
           <div class = "borderTab">
@@ -37,10 +40,19 @@
           <!--内容标签-->
           <div id = "navigationBar"></div>
           <!--主要内容页面-->
-          <div id = "content">
+          <div id="earthTypeButton">
+            <button id="earthOpen" class="button" onclick="openEarthType()">打开地球模式</button>
+            <button id="earthClose" class="button" onclick="closeEarthType()">关闭地球模式</button>
           </div>
+          <div id = "container"></div>
         </div>
       </div>
+      <!--百度地图API-->
+      <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=JZRnUQj9CpVelln0ZdLYz49gSWF55qw0"></script>
+      <script src="./BMap.js"></script>c
+      <!--高德地图API-->
+      <!--<script src="https://webapi.amap.com/loader.js"></script>-->
+      <!--<script src="./AMap.js"></script>-->
       <script src = "./main.js"></script>
     </body>
 </html>
