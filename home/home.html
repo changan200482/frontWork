@@ -6,7 +6,7 @@
 
         <title>个人博客</title>
         <link rel = "stylesheet" href = "./style.css">
-        <link rel="stylesheet" href="./CSS/header.css">
+        <link rel="stylesheet" href="../basicStyle/header.css">
         <link rel="stylesheet" href="./CSS/content.css">
         <link rel="stylesheet" href="../basicStyle/button.css">
 
@@ -21,22 +21,96 @@
           <a  href ="" id="head-selfBlog" >个人博客</a>
         </div>
         <div id ="head-menu">
-          <li><a class ="head-menuSelect" id="activeMenu" href="" style="font-size: 1rem;">主页</a></li>
-          <li><a class ="head-menuSelect" href="">图书角</a></li>
-          <li><a class ="head-menuSelect" href="">记录</a></li>
-          <li><a class ="head-menuSelect" href="">工具</a></li>
-          <li><a class ="head-menuSelect" href="">更多</a></li>
+          <li><a class ="head-menuSelect activeMenu" id="menuHome" href="./home.html" >主页</a></li>
+          <li><a class ="head-menuSelect" id="menuLibrary" href="../library/library.html">图书角</a></li>
+          <li><a class ="head-menuSelect" id="menuNote" href="../note/note.html">记录</a></li>
+          <li><a class ="head-menuSelect" id="menuTools" href="../tools/tools.html" >工具</a></li>
+          <li><a class ="head-menuSelect" id="menuMore" href="#">更多</a></li>
         </div>
         <div id="head-selfInfo">
           <a id="head-infoOfProject" href=""></a>
           <button id="head-selfInfoImg"></button>
         </div>
       </div>
+
       <div id="wrapper">
         <div class="card" id="card-content">
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p>这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
+          <div class="card-style" >
+            <a class="content-titleStyle" href="">title</a>
+            <hr>
+            <p id="test">这是一段简短的描述</p>
+          </div>
         </div>
         <div class="card" id="card-selfInfo">
-          
+          <div class="card-style" id="card-basicInfo">
+            <img id="card-selfInfoImg" src="../image/profilePicture.jpg" alt="profilePicture" width="128px" height="128px">
+            <h3 id="card-surferName" >ASaKi</h3>
+            <div id="card-webBox">
+              <a id="card-bilibiliSite" href="">
+                <img class="card-boxStyle" src="../image/bilibili.svg" alt="bilibili's adress" width="28" height="28">
+              </a>
+              <a id="card-githubSite" href="">
+                <img class="card-boxStyle" src="../image/github3.svg" alt="github's adress" width="28" height="28">
+              </a>
+              <a id="card-QQSite" href="">
+                <img class="card-boxStyle" src="../image/qq.svg" alt="QQ's adress" width="28" height="28">
+              </a>
+            </div>
+          </div>
+          <div class="card-style" id="card-selfIntroduction">
+            <div id="card-menu">
+              <li class="card-menuLi" id="activeMenuLi" >
+                <img title="个性签名" src="../image/introduce-copy.svg" alt="introduce" width="28" height="28">
+              </li>
+              <li class="card-menuLi">
+                <img title="标签" src="../image/tag.svg" alt="tag" width="28" height="28">
+              </li>
+              <li class="card-menuLi"></li>
+              <li class="card-menuLi"></li>
+            </div>
+            <hr style="width: 80%;">
+            <div id="introduceText"><span> 如果能在浪费时间中获得快乐，就不叫浪费时间</span></div>
+          </div>
         </div>
       </div>
     </body>

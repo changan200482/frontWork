@@ -60,11 +60,11 @@ body{
 #head-selfInfo #head-infoOfProject{
     width: 36px;
     height: 36px;
-    background-image: url(../../image/github.svg);
+    background-image: url(../image/github.svg);
     background-size: cover;
 }
 #head-selfInfo #head-infoOfProject:hover{
-    background-image: url(../../image/github-selected.svg);
+    background-image: url(../image/github-selected.svg);
 }
 #head-selfInfo #head-selfInfoImg{
     margin: auto 1rem;
@@ -73,7 +73,7 @@ body{
     border-radius: 5px;
     border: none;
     padding: 0;
-    background-image: url(../../image/profilePicture.jpg);
+    background-image: url(../image/profilePicture.jpg);
     background-size: cover;
     cursor:pointer;
 }
@@ -83,7 +83,7 @@ body{
     margin: auto 1rem;
     color: black;
 }
- #activeMenu,.head-menuSelect:hover:not(#activeMenu){
+ .activeMenu,.head-menuSelect:hover:not(.activeMenu){
     border-bottom: 1px solid rgb(98, 84, 220);
     color: rgb(98, 84, 220);
     font-size: large;
