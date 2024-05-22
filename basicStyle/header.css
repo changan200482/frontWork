@@ -36,22 +36,11 @@ body{
     color: black;
 }
 #head-home #head-selfBlog:hover{
-
     background-color:rgb(98, 84, 220, 0.05);
     border-radius: 5px;
 }
 
-#head-menu{
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-}
-
 #head-selfInfo{
-    margin: auto 0 auto auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -64,6 +53,7 @@ body{
     background-size: cover;
 }
 #head-selfInfo #head-infoOfProject:hover{
+    transition: all 0.3s ease;
     background-image: url(../image/github-selected.svg);
 }
 #head-selfInfo #head-selfInfoImg{
@@ -77,16 +67,28 @@ body{
     background-size: cover;
     cursor:pointer;
 }
+#head-menu{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
 .head-menuSelect{
     padding: 8px 0;
     text-decoration: none;
-    margin: auto 1rem;
+
+    margin: auto;
     color: black;
+    border-bottom: 1px solid transparent;
 }
  .activeMenu,.head-menuSelect:hover:not(.activeMenu){
-    border-bottom: 1px solid rgb(98, 84, 220);
+    transition: all 0.4s ease;
+    border-bottom-color:rgb(98, 84, 220);
     color: rgb(98, 84, 220);
-    font-size: large;
+    font-size: 1.2rem;
 }
 
 /*响应式布局*/

@@ -7,8 +7,8 @@
         <title>个人博客</title>
         <link rel="stylesheet" href="../basicStyle/header.css">
         <link rel="stylesheet" href="../basicStyle/button.css">
-        <link rel="stylesheet" href="./CSS/content.css">
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./works.css">
         <link rel="stylesheet" href="../basicStyle/table.css">
     </head>
 
@@ -37,7 +37,7 @@
       <div id="wrapper">
         <div id = "borderNavigationBar">
           <a href="./tools.html" title="数学工具">
-            <div class = "borderTab  activeTab" data-target = "mathTools">
+            <div class = "borderTab " data-target = "mathTools">
               <img  id="mathToolsImg" src="../image/math.svg" alt="math" width="16" height="16">
               <span id="mathToolsText">数学工具</span>
             </div>
@@ -49,7 +49,7 @@
             </div>
           </a>
           <a href="./otherTools.html" title="其他工具">
-            <div class = "borderTab" data-target = "otherTools">
+            <div class = "borderTab activeTab" data-target = "otherTools">
               <img  id="mathToolsImg" src="../image/others.svg" alt="other" width="16" height="16">
               <span id="mathToolsText">其他工具</span>
             </div>
@@ -57,16 +57,31 @@
         </div>
           <!--主要内容页面-->
         <div id = "toolsContent">
-          <div id="mathToolsChoose">
-            <li class="mathToolsMenu activeToolsMenu" data-target="multiplication">九九乘法表</li>
-            <li class="mathToolsMenu" data-target = "calculator">计算器</li>
-            <li class="mathToolsMenu" data-target = "others">其他工具</li>
-          </div>
-          <div id="mathToolsContent">
-            
-          </div>
+            <!--作业2-->
+            <div class="work" id="work2">
+                <div class="headerBox">
+                    <h4>2. 成绩评价</h4>
+                </div>
+                <div class="contentBox">
+                    <span class = "workText">请输入1~100内的数字:</span>
+                    <input type="number" class="contentInput" id="scoreInput"/>
+                    <button class = "button" id="evaluateButton" style="transform: scale(0.7);">确定</button>
+                </div>
+            </div>
+  
+            <!--作业3-->
+            <div class = "work" id = "work3">
+                <div class="headerBox">
+                    <h4>3. 检测邮箱</h4>
+                </div>
+                <div class="contentBox">
+                    <span class = "workText">请输入要检测的邮箱:</span>
+                    <input type="text" class="contentInput" id="emailInput"/>
+                    <button class = "button" id="emailEvaluateButton" style="transform: scale(0.7)">确定</button>
+                </div>
+            </div>
         </div>
-        <script src="./math.js"></script>
       </div>
+        <script src="./otherTools.js"></script>
     </body>
 </html>

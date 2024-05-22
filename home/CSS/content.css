@@ -11,7 +11,6 @@
     max-width: 95%;
     margin: 0 auto;
     padding: 4px;
-
 }
 
 .card-style{
@@ -22,6 +21,7 @@
     padding: 2rem;
 }
 .card-style:hover{
+    transition: all 0.3s ease;
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
 }
 #card-content{
@@ -39,10 +39,12 @@
     font-weight: bold;
     text-decoration: none;
     color: black;
+    border-bottom: 1px solid transparent;
 }
 
 .content-titleStyle:hover{
-    border-bottom: 1px solid rgb(98, 84, 220);
+    transition: all 0.4s ease;
+    border-bottom-color:rgb(98, 84, 220);
     color: rgb(98, 84, 220);
 }
 
@@ -79,12 +81,16 @@
     justify-content: center;
 }
 .card-boxStyle{
+    display: inline-block;
     padding: 10px 0;
     margin: 0 5px;
+    overflow: hidden;
+    width: 28px;
+    height: 28px;
+    transition: all 0.3s ease;
 }
 .card-boxStyle:hover{
-    width: 30px;
-    height: 30px;
+    transform: scale(1.2);
 }
 #card-selfIntroduction #card-menu{
     width: 250px;
@@ -99,10 +105,16 @@
     padding: 8px 8px 4px 8px;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border:0.1px transparent  solid;
 }
-#activeMenuLi, #card-menu .card-menuLi:hover:not(#activeMenu){
+#card-menu .activeMenuLi{
     background-color:rgb(98, 84, 220, 0.05);
-    border:0.1px rgba(98, 84, 220, 0.5)  solid
+    border-color:rgba(98, 84, 220, 0.5);
+}
+#card-menu .card-menuLi:hover:not(.activeMenuLi){
+    transition: all 0.4s ease;
+    background-color:rgb(98, 84, 220, 0.05);
+    border-color:rgba(98, 84, 220, 0.5);
 }
 #card-selfIntroduction #introduceText{
     margin: 0 auto 16px auto;

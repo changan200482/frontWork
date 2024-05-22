@@ -1,82 +1,89 @@
-body 
-{
-  width: 100%;
-  height: 100%;
-  margin: 0%;
-}
-
-#wrapper /*两栏类型的页面*/
+#wrapper
 {
   display: flex;
   flex-direction: row;
-  min-height: 99vh;
+  position: relative;
+  align-items: start;
+  top: 4.5rem;
 }
 
-#userTab/*用户标签*/
+#toolsContent
 {
-  width: 85%;
-}
-#userTab:hover
-{
-  background-color: transparent;/*用户标签设为透明，覆盖borderTab类默认的hover伪类*/
-}
-
-#main 
-{
+  position: relative;
+  max-width: 75%;
+  width: 75%;
+  height: 80vh;
+  border:1px solid rgba(0, 0, 0, 0.1) ;
   background-color: rgb(247, 248, 252);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 2.3em; 
-  width: 80%; /* 调整宽度以适应导航栏，假设总宽度减去导航栏宽度 */
-  margin: 1.5%;
-  display: flex; /* 添加Flex布局 */
-  flex-direction: column; /* 设置垂直方向布局 */
+  border-radius: 5px;
+  padding: 2rem;
+  margin: 0 auto 1rem auto;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  gap: 1.5rem; 
+  overflow-y: auto;
 }
-
-
-#navigationBar 
+#mathToolsChoose{
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border:1px solid rgba(0, 0, 0, 0.1) ;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10rem;
+  padding: 1rem 2rem;
+  position: sticky;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  font-size: small;
+  cursor: pointer;
+  z-index: 1;
+}
+.mathToolsMenu{
+  border-radius: 10rem;
+  border:1px transparent  solid;
+  padding: 8px;
+}
+.activeToolsMenu,.mathToolsMenu:hover:not(.activeToolsMenu)
 {
-  margin: 1%;
-  width: auto;
-  height: 2rem;
+  transition: all 0.4s ease;
+  background-color:rgb(98, 84, 220, 0.05);
+  border-color:rgba(98, 84, 220, 0.5) ;
+
 }
-
-#content 
-{
-  margin: 1%;
-  flex-grow: 1;
-  display: flex; /* 添加Flex布局 */
-  flex-direction: column; /* 设置垂直方向布局 */
-  position: relative;
+#mathToolsContent{
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
-
-
 #borderNavigationBar /*边栏样式*/
 {
-  border-radius:0% 1.3% 1.3% 0%; 
-  width: 20%;
+  margin:0 2rem;
   display: flex;
   flex-direction: column;
+}
+a{
+  text-decoration: none;
+  color: black;
 }
 .borderTab/*标签默认样式*/
 {
   border: 0.5px rgba(0, 0, 0, 0.086) solid;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom-color: transparent; 
-  border-radius: 0.45em;
-  width: 80%;
-  height: 5em;
-  margin: 10% auto; /* 简化上下左右外边距设置 */
-  font-size: 0.9em;
-
-  -webkit-user-select: none; /* Safari, Chrome 和 Opera */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE 和 Edge */
-  user-select: none; /* 标准语法 */
-
-  display: flex; /* 添加Flexbox布局 */
-  justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
+  border-radius: 5px;
+  width: 8rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem auto;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+
 .activeTab
 {
   background-color:rgb(98, 84, 220, 0.05);
@@ -84,7 +91,45 @@ body
 }
 .borderTab:hover:not(.activeTab)
 {
+  transition: all 0.4s ease;
   background-color:rgb(98, 84, 220, 0.05);
+}
+
+@media screen and (max-width: 1260px) {
+  #borderNavigationBar {
+    margin:0 1rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  #mathToolsText{
+    display: none;
+  }
+  .borderTab/*标签默认样式*/
+  {
+    border: 0.5px rgba(0, 0, 0, 0.086) solid;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom-color: transparent; 
+    border-radius: 5px;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.5rem auto;
+
+    display: flex; /* 添加Flexbox布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+  }
+  .borderTab #mathToolsImg{
+    width: 32px;
+    height: 32px;
+  }
+}
+@media screen and (max-width: 740px){
+  #borderNavigationBar{
+    display: none;
+  }
+  #mathToolsChoose{
+    display: none;
+  }
 }
 
 
