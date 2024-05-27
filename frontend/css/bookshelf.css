@@ -1,0 +1,131 @@
+#wrapper{
+    top: 4.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 0 auto;
+}
+#selfInfoWrapper{
+    max-width: 90%;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1rem;
+}
+#selfInfoWrapper #name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+#search{
+    border:rgba(98, 84, 220, 0.1) 1px solid;
+    border-radius: 5rem;
+    padding: 1rem;
+    height: 1rem;
+    display: flex;
+    width: 70%;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#searchImg{
+    width: 2rem;
+    height: 2rem;
+}
+select{
+    font-size: 1.05rem;
+    border: none;
+}
+input{
+    border: none;
+    background-color: transparent;
+    width: 80%;
+    font-size: 1.05rem;
+}
+select:focus,input:focus{
+    outline: none;
+}
+#searchBooksImg{
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    background-image: url(../images/enterinto.svg);
+    background-size: cover;
+    cursor: pointer;
+}
+#booksWrapper {
+    padding: 1rem;
+    margin: auto;
+    height: 65vh;
+    max-width: 90%;
+    min-width: 40rem; /* 新增: 确保即使内容很少时，容器也有一个最小宽度 */
+    width: 100%;
+    gap: 2rem;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); /* 保持不变 */
+}
+
+.books {
+    margin: auto;
+    overflow-wrap: break-word;
+    /* 为了让盒子大小更具有响应性，可以考虑使用flex-grow代替固定高度和宽度 */
+    max-width: 10rem; /* 新增: 限制单个书籍盒子的最大宽度，防止过大 */
+    height: 6rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgb(247, 248, 252);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: default;
+}
+
+/* 隐藏滚动条但保持滚动功能，以下为Webkit内核浏览器（如Chrome、Safari）的CSS */
+#booksWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.books:hover{
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+#booksName{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.booksImg{
+    width: 5rem;
+}
+@media screen and (min-width: 900px) {
+    #booksWrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (min-width: 1100px) {
+    #booksWrapper{
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    }
+}
+@media screen and (max-width: 800px) {
+    #selfName {
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    input{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 400px) {
+    input{
+        width: 30%;
+    }
+}

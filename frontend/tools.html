@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" lang="zh-CN">
+    <head>
+        <meta charset = "utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <title>个人博客</title>
+        <link rel="stylesheet" href="./css/basic/button.css">
+        <link rel="stylesheet" href="./css/basic/header.css">
+        <link rel="stylesheet" href="./css/basic/table.css">
+        <link rel="stylesheet" href="./css/basic/remindBox.css">
+        <link rel="stylesheet" href="./css/tools.css">
+    </head>
+
+    <body>
+      <div id = "header">
+        <div id ="head-home">
+          <a href ="./index.html">
+            <img id ="head-homeImg" src ="./images/home.svg" alt ="home" width ="16" height ="16">
+          </a>
+          <a  href ="./index.html" id="head-selfBlog" >个人博客</a>
+        </div>
+        <div id ="head-menu">
+          <li><a class ="head-menuSelect" id="menuHome" href="./index.html" >主页</a></li>
+          <li><a class ="head-menuSelect" id="menuLibrary" href="./bookshelf.html">图书角</a></li>
+          <li><a class ="head-menuSelect" id="menuNote" href="./note.html">记录</a></li>
+          <li><a class ="head-menuSelect  activeMenu" id="menuTools" href="./tools.html">工具</a></li>
+          <li><a class ="head-menuSelect" id="menuTools" href="./interesting.html">有意思的</a></li>
+          <li><a class ="head-menuSelect" id="menuMore" href="#">更多</a></li>
+        </div>
+        <div id="head-selfInfo">
+          <a id="head-infoOfProject" href=""></a>
+          <button id="head-selfInfoImg"></button>
+        </div>
+      </div>
+
+      <div id="wrapper">
+        <div id = "borderNavigationBar">
+            <div class = "borderTab  activeTab" data-target = "mathTools">
+              <img  id="mathToolsImg" src="./images/math.svg" alt="math" width="16" height="16">
+              <span class="mathToolsSpan" id="mathToolsText">数学工具</span>
+            </div>
+            <div class = "borderTab" data-target = "mapTools">
+              <img  id="mathToolsImg" src="./images/map.svg" alt="map" width="16" height="16">
+              <span class="mathToolsSpan" id="mathToolsText">地图</span>
+            </div>
+            <div class = "borderTab" data-target = "otherTools">
+              <img  id="mathToolsImg" src="./images/others.svg" alt="other" width="16" height="16">
+              <span class="mathToolsSpan" id="mathToolsText">其他工具</span>
+            </div>
+        </div>
+          <!--主要内容页面-->
+        <div id="remindBox">
+          <div id="closeRemindBox">x</div>
+          <div id="remindBoxContent"></div>
+        </div>
+        <div id = "toolsContent"></div>
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=JZRnUQj9CpVelln0ZdLYz49gSWF55qw0"></script>
+        <script src="./js/tools.js"></script>
+      </div>
+    </body>
+</html>

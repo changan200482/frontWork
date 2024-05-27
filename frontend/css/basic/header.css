@@ -1,0 +1,105 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+}
+#header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(247, 248, 252,0.5);
+    height: 3rem;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+    /*box-shadow: h-shadow v-shadow blur spread color inset;*/
+    position: fixed;
+    z-index: 1;
+}
+#head-home{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+#head-home #head-homeImg{
+    padding: 0.3875rem;
+    margin: 0.2875rem 0 auto 0.8875rem;
+    border:1px solid rgb(0,0,0);
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+#head-home #head-selfBlog{
+    padding: 8px;
+    font-weight: bolder;
+    margin-left: 0.8875rem;
+    text-decoration: none;
+    color: black;
+}
+#head-home #head-selfBlog:hover{
+    background-color:rgb(98, 84, 220, 0.05);
+    border-radius: 5px;
+}
+
+#head-selfInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#head-selfInfo #head-infoOfProject{
+    width: 36px;
+    height: 36px;
+    background-image: url(../../images/github.svg);
+    background-size: cover;
+}
+#head-selfInfo #head-infoOfProject:hover{
+    transition: all 0.3s ease;
+    background-image: url(../../images/github-selected.svg);
+}
+#head-selfInfo #head-selfInfoImg{
+    margin: auto 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    padding: 0;
+    background-image: url(../../images/profilePicture.jpg);
+    background-size: cover;
+    cursor:pointer;
+}
+#head-menu{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+}
+.head-menuSelect{
+    padding: 8px 0;
+    text-decoration: none;
+
+    margin: auto;
+    color: black;
+    border-bottom: 1px solid transparent;
+}
+ .activeMenu,.head-menuSelect:hover:not(.activeMenu){
+    transition: all 0.4s ease;
+    border-bottom-color:rgb(98, 84, 220);
+    color: rgb(98, 84, 220);
+    font-size: 1.2rem;
+}
+
+/*响应式布局*/
+@media screen and (max-width: 600px) {
+    #head-menu {
+        display: none;
+    }
+}
+@media screen and (max-width: 250px) {
+    #head-selfBlog {
+        display: none;
+    }
+}
+

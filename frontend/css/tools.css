@@ -1,0 +1,287 @@
+#wrapper
+{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: start;
+  top: 4.5rem;
+}
+
+#toolsContent
+{
+  position: relative;
+  max-width: 75%;
+  width: 75%;
+  height: 80vh;
+  border:1px solid rgba(0, 0, 0, 0.1) ;
+  background-color: rgb(247, 248, 252);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 2rem;
+  margin: 0 auto 1rem auto;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  gap: 1.5rem; 
+  overflow-y: auto;
+}
+#mathToolsChoose{
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border:1px solid rgba(0, 0, 0, 0.1) ;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10rem;
+  padding: 1rem 2rem;
+  position: sticky;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  font-size: small;
+  cursor: pointer;
+  z-index: 1;
+}
+.mathToolsMenu{
+  border-radius: 10rem;
+  border:1px transparent  solid;
+  padding: 8px;
+}
+.activeToolsMenu,.mathToolsMenu:hover:not(.activeToolsMenu)
+{
+  transition: all 0.4s ease;
+  background-color:rgb(98, 84, 220, 0.05);
+  border-color:rgba(98, 84, 220, 0.5) ;
+
+}
+#mathToolsContent{
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+#borderNavigationBar /*边栏样式*/
+{
+  margin:0 2rem;
+  display: flex;
+  flex-direction: column;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.borderTab/*标签默认样式*/
+{
+  border: 0.5px rgba(0, 0, 0, 0.086) solid;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-color: transparent; 
+  border-radius: 5px;
+  width: 8rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem auto;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeTab
+{
+  background-color:rgb(98, 84, 220, 0.05);
+  border:1px rgba(98, 84, 220, 0.5)  solid;
+}
+.borderTab:hover:not(.activeTab)
+{
+  transition: all 0.4s ease;
+  background-color:rgb(98, 84, 220, 0.05);
+}
+
+@media screen and (max-width: 1260px) {
+  #borderNavigationBar {
+    margin:0 1rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  #mathToolsText{
+    display: none;
+  }
+  .borderTab/*标签默认样式*/
+  {
+    border: 0.5px rgba(0, 0, 0, 0.086) solid;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom-color: transparent; 
+    border-radius: 5px;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.5rem auto;
+
+    display: flex; /* 添加Flexbox布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+  }
+  .borderTab #mathToolsImg{
+    width: 32px;
+    height: 32px;
+  }
+}
+@media screen and (max-width: 740px){
+  #borderNavigationBar{
+    display: none;
+  }
+  #mathToolsChoose{
+    display: none;
+  }
+}
+
+/*输入框样式*/
+.contentInput
+{
+  border: 1px black solid;
+  width: 12.5%;
+}
+.contentInput:focus/*取消选择框高亮*/
+{
+  outline: none;
+}
+.work
+{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: white;
+  width: 80%;
+  border-radius: 2em;
+  margin:2% auto;
+  padding:4% 6%;
+}
+.contentBox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+#map
+{
+  max-width: 90%;
+  left: 0;
+  width: 90%;
+  height: 100%;
+  border:1px solid rgba(0, 0, 0, 0.1) ;
+  background-color: rgb(247, 248, 252);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+}
+.markerMessage{
+  width: 10rem;
+  height: 1.5rem;
+}
+
+#submitRemindBox {
+  display: inline-block; /* 或者使用 'flex' 如果支持现代浏览器 */
+  vertical-align: middle;
+  margin-left: auto;
+  text-align: center;
+  width: 3.5rem;
+  height: 2rem;
+  line-height: 2rem; /* 这将使文本在垂直方向上居中 */
+  cursor: pointer;
+}
+
+.mathToolsSpan{
+  cursor: default;
+}
+#mapTools{
+  position: fixed;
+  left: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0 0.8rem 0;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border:1px solid rgba(0, 0, 0, 0.1) ;
+  background-color: rgb(247, 248, 252);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  z-index: 1;
+}
+
+#messageBoard{
+  background-color: transparent;
+  background-image: url(../images/messageBoard.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#messageBoard:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/messageBoardSelected.svg);
+}
+#messageBoard:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/messageBoardSelected.svg);
+
+}
+
+#earthMode{
+  background-color: transparent;
+  background-image: url(../images/earthMode.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#earthMode:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/earthModeSelected.svg);
+}
+#earthMode:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/earthModeSelected.svg);
+}
+
+#amplify{
+  background-color: transparent;
+  background-image: url(../images/amplify.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#amplify:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/amplifySelected.svg);
+}
+#amplify:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/amplifySelected.svg);
+}
+#reduce{
+  background-color: transparent;
+  background-image: url(../images/reduce.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#reduce:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/reduceSelected.svg);
+}
+#reduce:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/reduceSelected.svg);
+}
+
