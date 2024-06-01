@@ -1,3 +1,4 @@
+//插入标签的响应函数
 document.addEventListener('DOMContentLoaded', function() {
   const ToolsTab = document.querySelectorAll('.borderTab[data-target]');
   const content = document.getElementById('toolsContent');
@@ -116,27 +117,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 });
-function generateMultiplicationTable() {
-    const table = document.getElementById("multiplicationTable");
-    // 清空之前的内容，如果有的话
-    table.innerHTML = "";
-  
-    for (let i = 1; i <= 9; i++) {
-      const row = table.insertRow(); // 创建新行
-  
-      for (let j = 1; j <= i; j++) {
-        const cell = row.insertCell(); // 创建新列（单元格）
-        cell.textContent = `${j} * ${i} = ${i * j}`; // 设置单元格内容
-      }
-    }
-}
 
+//创建九九乘法表
+function generateMultiplicationTable() {
+  const table = document.getElementById("multiplicationTable");
+  // 清空之前的内容，如果有的话
+  table.innerHTML = "";
+
+  for (let i = 1; i <= 9; i++) {
+    const row = table.insertRow(); // 创建新行
+
+    for (let j = 1; j <= i; j++) {
+      const cell = row.insertCell(); // 创建新列（单元格）
+      cell.textContent = `${j} * ${i} = ${i * j}`; // 设置单元格内容
+    }
+  }
+}
 function hideMultiplicationTable() {
   const table = document.getElementById("multiplicationTable");
   // 清空之前的内容，如果有的话
   table.innerHTML = "";
 }
 
+//评分机制
 function evaluateScore(score) {
   if (score > 100 || score < 0) {
     return "请输入1 ~ 100以内的数字";
@@ -153,12 +156,16 @@ function evaluateScore(score) {
     }
   }
 }
-  
+
+
+//判断邮箱格式
 function validateEmail(email) {
   var pattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
   return pattern.test(email);
 }
 
+
+//点击事件的处理
 document.addEventListener("click", function(e) {
     if (e.target.id === "evaluateButton") {
       // 获取输入的成绩
@@ -175,9 +182,47 @@ document.addEventListener("click", function(e) {
 });
 
 
+//原定用来设置拖动方块的函数，暂时不能应用于弹出窗口，原因未知
+function setupDraggable(draggableID) {
+  var draggable = document.getElementById(draggableID);
+  if (draggable) { // 确保draggable元素存在才执行绑定操作
+    draggable.addEventListener('mousedown', function(event) {
+      var offsetX = event.clientX - draggable.offsetLeft;
+      var offsetY = event.clientY - draggable.offsetTop;
 
-// Path: frontend/js/map.js
+      function onMouseMove(event) {
+        var newX = event.clientX - offsetX;
+        var newY = event.clientY - offsetY;
+
+        var maxX = content.offsetWidth - draggable.offsetWidth;
+        var maxY = content.offsetHeight - draggable.offsetHeight;
+
+        newX = Math.min(maxX, Math.max(0, newX));
+        newY = Math.min(maxY, Math.max(0, newY));
+
+        draggable.style.left = newX + 'px';
+        draggable.style.top = newY + 'px';
+      }
+
+      function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+      }
+
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    });
+  }
+}
+setupDraggable('mapTools')
+
+//地图函数
 function initializeBaiduMap() {
+  var isEarthMode = false; //判断地球模式是否开启
+  var rightClickQueue = []; // 初始化一个空数组作为坐标队列
+  var rightClickQueue = []; // 初始化一个空数组作为坐标队列
+  var MAX_QUEUE_LENGTH = 10; // 设定队列最大长度
+
   var map = new BMapGL.Map("map"); // 创建地图实例 
   var centerpoint = new BMapGL.Point(116.404, 39.915); // 创建点坐标 
   map.centerAndZoom(centerpoint, 15);
@@ -186,27 +231,24 @@ function initializeBaiduMap() {
   map.addControl(new BMapGL.ScaleControl()); //添加比例尺控件
   map.addControl(new BMapGL.LocationControl()); //添加定位控件
 
-  var rightClickQueue = []; // 初始化一个空数组作为坐标队列
-  var MAX_QUEUE_LENGTH = 10; // 设定队列最大长度
-  var rightClickQueue = []; // 初始化一个空数组作为坐标队列
-  var MAX_QUEUE_LENGTH = 10; // 设定队列最大长度
-  
   var currentContextMenu = null; // 保存当前的右键菜单
   // 从后端获取现有的标记
-  function downloadMarkers() {
-
-    fetch('http://localhost:5000/data')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(markerData => {
-            map._addMarker = true;
-            let point = new BMapGL.Point(markerData.longitude, markerData.latitude);
-            addMarker(point, markerData.name, markerData.note, markerData.message);
-        });
-    });
-  }
-  downloadMarkers();
-
+  document.getElementById('downloadMarker').addEventListener('click', function() {
+    function downloadMarkers() {
+      map.clearOverlays(); // 清除地图上的所有覆盖物
+      fetch('http://localhost:5000/data')
+      .then(response => response.json())
+      .then(data => {
+          data.forEach(markerData => {
+              map._addMarker = true;
+              let point = new BMapGL.Point(markerData.longitude, markerData.latitude);
+              addMarker(point, markerData.name, markerData.note, markerData.message);
+          });
+      });
+    }
+    downloadMarkers();
+  });
+  
   // 创建右键菜单项
   var point = new BMapGL.Point(116.404, 39.915); // 创建点坐标 
   var createTxtMenuItem = function(point) {
@@ -320,17 +362,58 @@ function initializeBaiduMap() {
 
     // 提交按钮事件
     document.getElementById('submitRemindBox').addEventListener('click', function() {
-        var markerName = document.getElementById('markerName').value;
-        var markerNote = document.getElementById('markerNote').value;
-        var markerMessage = document.getElementById('markerMessage').value;
-        if (!markerName) {
-            alert('请输入名字');
+      var markerName = document.getElementById('markerName').value;
+      var markerNote = document.getElementById('markerNote').value;
+      var markerMessage = document.getElementById('markerMessage').value;
+    
+      if (!markerName) {
+        alert('请输入名字');
+        return;
+      }
+    
+      // 检查名字是否已存在
+      checkNameExists(markerName)
+        .then(exists => {
+          if (exists) {
+            alert('名字已存在，请使用其他名字');
             return;
-        }
-        addMarker(point, markerName, markerNote, markerMessage);
-        remindBox.style.display = 'none';
+          } else {
+            addMarker(point, markerName, markerNote, markerMessage)
+              .then(() => {
+                alert('提交成功');
+                remindBox.style.display = 'none';
+              })
+              .catch(error => {
+                console.error('添加标记时出错:', error);
+                alert('添加标记时出错，请稍后再试');
+              });
+          }
+        })
+        .catch(error => {
+          console.error('检查名字时出错:', error);
+          alert('检查名字时出错，请稍后再试');
+        });
+    });
+
+  }
+
+// 检查名字是否已存在的函数
+  function checkNameExists(name) {
+    return fetch('http://localhost:5000/check_name', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: name })
+    })
+    .then(response => response.json())
+    .then(data => data.exists)
+    .catch(error => {
+      console.error('Error checking name:', error);
+      throw error;
     });
   }
+
 
   var markers = []; // 初始化一个空数组用于存储标注对象
 
@@ -343,6 +426,7 @@ function initializeBaiduMap() {
           <div>留言：<div class="markerMessage">${marker.message}</div></div>
       `;
       remindBox.style.display = 'flex';
+      
   }
 
     // 关闭消息框
@@ -350,72 +434,110 @@ function initializeBaiduMap() {
       document.getElementById('remindBox').style.display = 'none';
   });
 
-
-  function addMarker(point, name, note, message) {
+ // 添加标记的函数
+function addMarker(point, name, note, message) {
+  return new Promise((resolve, reject) => {
     if (map._addMarker) {
-        map._addMarker = false; // 清除标志，确保只在下一次点击时执行
-        let markerPoint = new BMapGL.Point(point.lng, point.lat); // 创建标注点
-        let marker = new BMapGL.Marker(markerPoint); // 创建标注
-        map.addOverlay(marker); // 将标注添加到地图中
-        markers.push(marker); // 将标注对象存入数组
+      map._addMarker = false; // 清除标志，确保只在下一次点击时执行
+      let markerPoint = new BMapGL.Point(point.lng, point.lat); // 创建标注点
+      let marker = new BMapGL.Marker(markerPoint); // 创建标注
+      map.addOverlay(marker); // 将标注添加到地图中
+      markers.push(marker); // 将标注对象存入数组
 
-        // 假设你有一些标记详情
-        marker.name = name || "Error";
-        marker.note = note || "无";
-        marker.message = message ||"无";
+      // 假设你有一些标记详情
+      marker.name = name || "Error";
+      marker.note = note || "无";
+      marker.message = message || "无";
 
-        let markerMenu = new BMapGL.ContextMenu();
-        let items = markerMenuItem(marker);
+      let markerMenu = new BMapGL.ContextMenu();
+      let items = markerMenuItem(marker);
 
-        for (var i = 0; i < items.length; i++) {
-            markerMenu.addItem(new BMapGL.MenuItem(
-                items[i].text,
-                items[i].callback,
-                {
-                    width: 200,
-                    id: 'menu' + i
-                }
-            ));
-        }
+      for (var i = 0; i < items.length; i++) {
+        markerMenu.addItem(new BMapGL.MenuItem(
+          items[i].text,
+          items[i].callback,
+          {
+            width: 200,
+            id: 'menu' + i
+          }
+        ));
+      }
 
-        marker.addEventListener("rightclick", function(e) {
-            marker.addContextMenu(markerMenu);
-            markerMenu.hide();
-            setTimeout(function() {
-                markerMenu._container.style.top = e.pixel.y + "px";
-                markerMenu._container.style.left = e.pixel.x + "px";
-                markerMenu.show(e.pixel.x, e.pixel.y);
-            }, 0);
-        });
+      marker.addEventListener("rightclick", function(e) {
+        marker.addContextMenu(markerMenu);
+        markerMenu.hide();
+        setTimeout(function() {
+          markerMenu._container.style.top = e.pixel.y + "px";
+          markerMenu._container.style.left = e.pixel.x + "px";
+          markerMenu.show(e.pixel.x, e.pixel.y);
+        }, 0);
+      });
 
-        fetch('http://localhost:5000/data', {
+      fetch('http://localhost:5000/data', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            latitude: point.lat,
-            longitude: point.lng,
-            name: name,
-            note: note,
-            message: message
+          latitude: marker.getPosition().lat,
+          longitude: marker.getPosition().lng,
+          name: name,
+          note: note,
+          message: message
         })
       })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        resolve(); // 提交成功
+      })
+      .catch(error => {
+        console.error('Error sending marker data:', error);
+        reject(error); // 提交失败
+      });
+    } else {
+      resolve(); // 如果 map._addMarker 为 false，不进行任何操作，直接 resolve
     }
+  });
 }
 
+  // 移除标记
   function removeMarker(marker){
     map.removeOverlay(marker);
     var index = markers.indexOf(marker);
     if (index > -1) {
         markers.splice(index, 1);
     }
+
+    const latitude = typeof marker.getPosition().lat === 'function' ? marker.getPosition().lat() : marker.getPosition().lat;
+    const longitude = typeof marker.getPosition().lng === 'function' ? marker.getPosition().lng() : marker.getPosition().lng;
+
+    fetch('http://localhost:5000/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            latitude: latitude,
+            longitude: longitude,
+            name: marker.name,
+            note: marker.note,
+            message: marker.message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Marker removed successfully:', data);
+        } else {
+            console.error('Error removing marker:', data);
+        }
+    })
+    .catch(error => console.error('Fetch error:', error));
   }
 
 
-  var isEarthMode = false; //判断地球模式
+
   document.addEventListener("click", function(e) {
       if (e.target.id === "earthMode") {
           if (!isEarthMode) {
@@ -433,4 +555,6 @@ function initializeBaiduMap() {
           map.zoomOut();
       } 
   });
+
+  
 }

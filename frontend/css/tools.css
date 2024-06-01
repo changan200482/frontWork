@@ -209,6 +209,43 @@ a{
   z-index: 1;
 }
 
+#uploadMarker{
+  background-color: transparent;
+  background-image: url(../images/upload.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#uploadMarker:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/uploadSelected.svg);
+}
+#uploadMarker:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/uploadSelected.svg);
+}
+#downloadMarker{
+  background-color: transparent;
+  background-image: url(../images/download.svg);
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: cover;
+  border: none;
+}
+#downloadMarker:hover{
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1) ;
+  background-image: url(../images/downloadSelected.svg);
+}
+#downloadMarker:active{
+  border: 1px solid rgba(0, 0, 0, 0.5) ;
+  transition: all -0.5s ease;
+  background-image: url(../images/downloadSelected.svg);
+}
+
 #messageBoard{
   background-color: transparent;
   background-image: url(../images/messageBoard.svg);

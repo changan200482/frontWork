@@ -1,5 +1,5 @@
-function setupDraggable() {
-    var draggable = document.getElementById('draggable');
+function setupDraggable(draggableID) {
+    var draggable = document.getElementById(draggableID);
     if (draggable) { // 确保draggable元素存在才执行绑定操作
       draggable.addEventListener('mousedown', function(event) {
         var offsetX = event.clientX - draggable.offsetLeft;
@@ -30,4 +30,4 @@ function setupDraggable() {
     }
   }
 
-  setupDraggable();
+  setupDraggable('draggable');
